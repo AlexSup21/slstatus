@@ -4,7 +4,7 @@
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "--";
+static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -58,6 +58,7 @@ static const char unknown_str[] = "--";
  * uid                 UID of current user             NULL
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
+ * alsa_master_vol     ALSA Master device volume       NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
  *                                                     NULL on OpenBSD/FreeBSD
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
@@ -65,16 +66,5 @@ static const char unknown_str[] = "--";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ wifi_essid,       "[ %s ",   "wlan0" },
-	{ wifi_perc,        "%s%%] ",   "wlan0" },
-	{ backlight_perc,   "[ %s] ",  "intel_backlight" },
-	/*{ netspeed_rx,  "| RX:%s ",     "wlan0" },
-	{ netspeed_tx,  "TX:%s ",       "wlan0" },*/
-    { run_command,      "[ %s] ",  "amixer sget Master | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'" },
-	{ cpu_perc,         "[ %s%% ", NULL },
-	{ ram_perc,         " %s%%] ", NULL },
-    { temp,             "[ %s°C] ","/sys/class/thermal/thermal_zone0/temp" },
-    { battery_state,    "[%s",      "BAT0" },
-    { battery_perc,     " %s%%] ",  "BAT0" },
-	{ datetime,         "%s",       "[ %a, %Y-%m-%d %H:%M:%S]" }
+	{ datetime, "%s",           "%F %T" },
 };

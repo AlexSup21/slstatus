@@ -67,14 +67,16 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ wifi_essid,       "[ %s ",   "wlan0" },
 	{ wifi_perc,        "%s%%] ",   "wlan0" },
-	{ backlight_perc,   "[ %s] ",  "intel_backlight" },
+	/*{ backlight_perc,   "[ %s] ",  "intel_backlight" },*/
 	/*{ netspeed_rx,  "| RX:%s ",     "wlan0" },
 	{ netspeed_tx,  "TX:%s ",       "wlan0" },*/
     { run_command,      "[ %s] ",  "amixer sget Master | tail -1 | awk '{print $5 }' | sed 's@\\(\\[\\|\\]\\)@@g'" },
-	{ cpu_perc,         "[ %s%% ", NULL },
-	{ ram_perc,         " %s%%] ", NULL },
-    { temp,             "[ %s°C] ","/sys/class/thermal/thermal_zone0/temp" },
+    { temp,             "[%s°C ",  "/sys/class/thermal/thermal_zone0/temp" },
+	{ cpu_perc,         " %s%%] ", NULL },
+	{ ram_perc,         "[ %s%%] ",NULL },
     { battery_state,    "[%s",      "BAT0" },
     { battery_perc,     " %s%%] ",  "BAT0" },
+    { run_command,      "%s",  "/home/alex/scripts/bat.sh" },
+    /*{ run_command,      "%s",	    "/root/slstatus/components/bat.sh" },*/
 	{ datetime,         "%s",       "[ %a, %Y-%m-%d %H:%M:%S]" }
 };

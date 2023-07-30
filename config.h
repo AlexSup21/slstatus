@@ -75,8 +75,7 @@ static const struct arg args[] = {
 	{ cpu_perc,         " %s%%] ", NULL },
 	{ ram_perc,         "[ %s%%] ",NULL },
     { battery_state,    "[%s",      "BAT0" },
-    { battery_perc,     " %s%%] ",  "BAT0" },
-    { run_command,      "%s",  "/home/alex/scripts/bat.sh" },
-    /*{ run_command,      "%s",	    "/root/slstatus/components/bat.sh" },*/
+    { run_command,      "%s",       "~/.config/suckless/slstatus/components/battery.sh" },
+    { battery_perc,     "%s%%] ",   "BAT0" },
 	{ datetime,         "%s",       "[ %a, %Y-%m-%d %H:%M:%S]" }
 };
